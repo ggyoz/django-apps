@@ -20,10 +20,13 @@ def HTMLTemplate(articleTag):
     <html>
     <body>
         <h1><a href="/">Django</a></h1>
-        <ol>
+        <ul>
             {ol}
-        </ol>
-        {articleTag}        
+        </ul>
+        {articleTag}
+        <ul>        
+            <li><a href="/create">Create</a></li>
+        </ul>
     </body>
     </html>
     '''    
@@ -49,5 +52,16 @@ def read(request, id):
     return HttpResponse(HTMLTemplate(article))
 
 def create(request):
-    return HttpResponse('Create')
+    
+    article = '''
+        <form action="/create/">
+            <p><input type="text" name="title" id="title" placeholder="title" style="width:500px"></p>
+            <p><textarea name="body" placeholder="body" style="width:500px"></textarea></p>
+            <p><input type="submit"</p>
+        </form>
+    
+    '''
+    
+    
+    return HttpResponse(HTMLTemplate(article))
 
